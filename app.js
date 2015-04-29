@@ -5,16 +5,15 @@ var logger = require("morgan");
 var path = require("path");
 var swig = require('swig');
 var routes = require('./routes/');
-var http = require('http').Server(app);
-var io  = require('socket.io')(http);
+var server = app.listen(3000);
+var io = require('socket.io').listen(server);
 
 io.on('connection', function(socket){
-    console.log("connected")
+    console.log("Hello, socket connected")
 });
 
-app.use('/', routes);
+app.use('/', routes(io));
 app.use(logger('dev'));
-app.listen(3000);
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views',path.join(__dirname,'/views'));
