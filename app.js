@@ -5,6 +5,12 @@ var logger = require("morgan");
 var path = require("path");
 var swig = require('swig');
 var routes = require('./routes/');
+var http = require('http').Server(app);
+var io  = require('socket.io')(http);
+
+io.on('connection', function(socket){
+    console.log("connected")
+});
 
 app.use('/', routes);
 app.use(logger('dev'));
