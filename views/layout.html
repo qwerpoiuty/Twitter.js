@@ -88,7 +88,7 @@
     // When 'new_tweet' events are fired, do something with the packaged tweet
     socket.on('new_tweet', function (tweet) {
         var twit = document.getElementById('tweets');
-        twit.innerHTML = '<li><span id="name"><a href="/users/'+tweet.name+'">'+tweet.name+'</a></span><br>'+tweet.text+'</li>' + twit.innerHTML;
+        twit.innerHTML = '<li><span id="name"><a href=/users/'+tweet.name+'>'+tweet.name+'</a></span><br>'+tweet.text+'</li>' + twit.innerHTML;
         // some logic to add the new tweet to the DOM…
     });
 </script>
